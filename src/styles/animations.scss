@@ -1,0 +1,41 @@
+@import './variables.scss';
+
+@keyframes loading {
+    50% {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+
+    50.1% {
+      transform-origin: right;
+    }
+
+    100% {
+      transform: scaleX(0);
+      transform-origin: right;
+    }
+}
+
+@keyframes fadeInDown {
+  0% {
+      -webkit-transform: translate3d(0,-100%,0);
+      transform: translate3d(0,-100%,0)
+  }
+
+  100% {
+      -webkit-transform: none;
+      transform: none
+  }
+}
+
+@keyframes fadeOutUp {
+  0% {
+      opacity: 1
+  }
+
+  100% {
+      opacity: 0;
+      -webkit-transform: translateY(-100%);
+      transform: translateY(-100%)
+  }
+}

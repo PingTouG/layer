@@ -1,0 +1,50 @@
+@import './animations.scss';
+@import './variables.scss';
+
+.x-message{
+    display: none;
+    position: absolute;
+    top: 10px;
+    left: 0;
+    padding: 10px;
+    min-width: 200px;
+    max-width: 90%;
+    word-break: break-all;
+    border-radius: 4px;
+    background-color:  $primary-light;
+    color: $primary-dark;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+    z-index: 999;
+
+    &__fade-in-down{
+        animation-duration: .6s;
+        animation-fill-mode: both;
+        animation-name: fadeInDown;
+    }
+
+    &__fade-out-up{
+        animation-duration: .6s;
+        animation-fill-mode: both;
+        animation-name:fadeOutUp;
+    }
+
+    &--info{
+        background-color:  $info-light;
+        color: $info-dark;
+    }
+
+    &--success{
+        background-color:  $success-light;
+        color: $success-dark;
+    }
+
+    &--warning{
+        background-color:  $warning-light;
+        color: $warning-dark;
+    }
+
+    &--error{
+        background-color:  $error-light;
+        color: $error-dark;
+    }
+}

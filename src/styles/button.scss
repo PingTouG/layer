@@ -1,0 +1,130 @@
+@import './variables.scss';
+@import './animations.scss';
+
+/*
+ 自定义属性优先级：x-type << x-plain
+*/
+
+
+.x-button{
+    border:1px solid $border-color-default;
+    outline: none;
+    border-radius: 4px;
+    padding: 8px 24px;
+    background-color: $white-color;
+    transition: all 0.1s;
+
+    &:active{
+        transform: scale(0.95);
+    }
+
+    &:hover{
+        cursor: pointer;
+    }
+
+    /* type start */
+    &[x-type="primary"]{
+        border-color: $primary;
+        color:#fff;
+        background-color: $primary;
+    }
+
+    &[x-type="warning"]{
+        border-color: $warning;
+        color:$white-color;
+        background-color: $warning;
+    }
+
+    &[x-type="success"]{
+        border-color: $success;
+        color:$white-color;
+        background-color: $success;
+    }
+
+    &[x-type="error"]{
+        border-color: $error;
+        color:$white-color;
+        background-color: $error;
+    }
+
+    &[x-type="link"]{
+        border: none;
+        color:$primary;
+        background-color: none;
+
+        &:active{
+            transform: none;
+        }
+    }
+    /* type end */
+
+
+    /* plain start*/
+    &[x-plain]{
+        color:$main-color;
+        background-color: $white-color;
+        border-color: $border-color-default;
+    }
+
+    &[x-plain][x-type="primary"]{
+        color:$primary;
+        background-color: $primary-light;
+        border-color: $primary;
+    }
+
+    &[x-plain][x-type="warning"]{
+        color:$warning;
+        background-color: $warning-light;
+        border-color: $warning;
+    }
+
+    &[x-plain][x-type="success"]{
+        color:$success;
+        background-color: $success-light;
+        border-color: $success;
+    }
+
+    &[x-plain][x-type="error"]{
+        color:$error;
+        background-color: $error-light;
+        border-color: $error;
+    }
+    /* plain end*/
+
+    &[x-block]{
+        width: 100%;
+    }
+
+    /* loading start */
+    &[x-loading="true"]{
+        position: relative;
+
+        &::before{
+            position: absolute;
+            content: '';
+            top:0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(0,0,0,0.05);
+            border-radius: 4px;
+            transform: scaleX(0);
+            transform-origin: left;
+            animation: loading 2s ease-in-out infinite;
+        }
+    
+        &:active{
+            transform: none;
+        }
+    }
+    /* loading end */
+
+
+
+    &:disabled{
+        cursor: not-allowed;
+        background-color: $primary-disabled;
+        border-color: transparent;
+    }
+
+}

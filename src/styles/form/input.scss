@@ -1,0 +1,26 @@
+@import '../variables.scss';
+
+.x-input{
+    border: 1px solid $border-color-default;
+    border-radius: 4px;
+    outline: none;
+    padding: 12px;
+    width: 100%;
+    transition: border-color 0.5s;
+
+    &::placeholder{
+        color: $light-color;
+    }
+
+    &:hover{
+        border-color: $border-color-lv1;
+    }
+
+    &:focus{
+        border-color: $primary;
+    }
+
+    &:disabled{
+        cursor: not-allowed;
+    }
+}
