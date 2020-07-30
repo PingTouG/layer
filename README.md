@@ -1,6 +1,6 @@
 # lazyer
 
-> 基于Vue3开发的纯CSS后台管理系统
+> 基于Vue3开发的后台管理系统
 
 ## Project setup
 ```
