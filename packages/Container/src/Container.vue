@@ -5,26 +5,37 @@
 </template>
 
 <script>
-import { computed } from 'vue'
+import { computed, setBlockTracking } from 'vue'
+
+const saferGetter = getter => {
+  return () => {
+    setBlockTracking(-1)
+    const res = getter()
+    setBlockTracking(1)
+    return res
+  }
+}
 export default {
   name: 'CContainer',
   props: {
     direction: String
   },
   setup(props, { slots }) {
-    const isVertical = computed(() => {
-      if (props.direction === 'vertical') {
-        return true
-      } else if (props.direction === 'horizontal') {
-        return false
-      }
+    const isVertical = computed(
+      saferGetter(() => {
+        if (props.direction === 'vertical') {
+          return true
+        } else if (props.direction === 'horizontal') {
+          return false
+        }
 
-      return slots?.default().some(vnode => {
-        const tag = vnode['type'] && vnode['type']['name']
+        return slots?.default().some(vnode => {
+          const tag = vnode && vnode?.type?.name
 
-        return tag === 'CHeader' || tag === 'CFooter'
+          return tag === 'CHeader' || tag === 'CFooter'
+        })
       })
-    })
+    )
 
     return {
       isVertical
