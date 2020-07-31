@@ -1,9 +1,8 @@
 <template>
   <div class="x-menu">
-    <template v-for="menu in dataSource">
+    <div v-for="menu in dataSource" :key="menu.path">
       <x-submenu
         v-if="menu.children"
-        :key="menu.path"
         :children="menu.children.map(item => item.path)"
         :active-path="active"
       >
@@ -19,7 +18,6 @@
         </x-menu-item>
       </x-submenu>
       <x-menu-item
-        :key="menu.path"
         :path="menu.path"
         :active-path="active"
         @change="onPathChange"
@@ -27,7 +25,7 @@
       >
         {{ menu.text }}
       </x-menu-item>
-    </template>
+    </div>
   </div>
 </template>
 
